@@ -10,14 +10,26 @@ size = Vector2(64, 480)
 
 [node name="Main" type="Node2D" unique_id=91465456]
 
+[node name="Background" type="Polygon2D" parent="." z_index=-10]
+polygon = PackedVector2Array(-3000, -800, 3000, -800, 3000, -400, 3000, 0, 3000, 400, 3000, 800, -3000, 800, -3000, 400, -3000, 0, -3000, -400)
+vertex_colors = PackedColorArray(0.431373, 0.560784, 0.658824, 1, 0.431373, 0.560784, 0.658824, 1, 0.494118, 0.623529, 0.721569, 1, 0.576471, 0.67451, 0.745098, 1, 0.545098, 0.521569, 0.439216, 1, 0.360784, 0.376471, 0.282353, 1, 0.360784, 0.376471, 0.282353, 1, 0.545098, 0.521569, 0.439216, 1, 0.576471, 0.67451, 0.745098, 1, 0.494118, 0.623529, 0.721569, 1)
+
 [node name="Floor" type="StaticBody2D" parent="." unique_id=264701739]
 position = Vector2(0, 400)
+
+[node name="FloorVisual" type="Polygon2D" parent="Floor"]
+color = Color(0.545098, 0.45098, 0.333333, 1)
+polygon = PackedVector2Array(-2000, -16, 2000, -16, 2000, 16, -2000, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=907107225]
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=358318096]
 position = Vector2(480, 240)
+
+[node name="WallVisual" type="Polygon2D" parent="Wall"]
+color = Color(0.360784, 0.419608, 0.45098, 1)
+polygon = PackedVector2Array(-32, -240, 32, -240, 32, 240, -32, 240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1318083401]
 shape = SubResource("RectangleShape2D_wall")
