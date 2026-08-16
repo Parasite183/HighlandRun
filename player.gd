@@ -96,7 +96,8 @@ signal dash_ended
 var _jump_velocity: float = 0.0            # computed from jump_height + gravity
 var _coyote_timer: float = 0.0             # counts down while airborne
 var _jump_buffer_timer: float = 0.0        # stores a recent jump press
-var _wall_jump_cooldown_timer: float = 0.0 # blocks re-grab right after a wall jump
+var _wall_jump_cooldown_timer: float = 0.0 # blocks re-grabbing the wall we last jumped from
+var _last_wall_jump_side: int = 0            # wall_side of the most recent wall jump (0 = none)
 var _dash_timer: float = 0.0               # > 0 while a dash is active
 var _dash_cooldown_timer: float = 0.0      # counts down after a dash ends
 var _dash_direction: float = 1.0           # horizontal direction of the active dash
@@ -202,8 +203,13 @@ func _is_wall_sliding(wall_side: int, input_dir: float) -> bool:
 		return false
 	if velocity.y <= 0.0:  # only while falling, not while rising or standing still
 		return false
-	if _wall_jump_cooldown_timer > 0.0:
-		return false  # brief grace period after a wall jump
+	# The cooldown only blocks re-grabbing the *same* wall the player jumped
+	# from, so holding into one wall can't chain unintended wall jumps. The
+	# opposite wall is a different surface and is grabbable immediately (no
+	# cooldown at all) - that side-awareness is what makes chimney climbing
+	# (alternating wall jumps up a narrow gap) possible.
+	if _wall_jump_cooldown_timer > 0.0 and wall_side == _last_wall_jump_side:
+		return false  # brief grace period after jumping off this same wall
 	# The player must actively push into the wall - just touching it isn't enough.
 	if wall_side == -1:
 		return input_dir < 0.0
@@ -224,9 +230,12 @@ func _do_wall_jump(wall_side: int) -> void:
 	velocity.x = -float(wall_side) * wall_jump_push
 	velocity.y = -wall_jump_velocity
 	_facing = -float(wall_side)
-	# Block re-grabbing this wall briefly so holding into it doesn't chain
-	# wall jumps unintentionally.
+	# Block re-grabbing THIS wall briefly so holding into it doesn't chain
+	# wall jumps unintentionally. The opposite wall stays grabbable: the
+	# cooldown is only checked against the side we jumped from (see
+	# _is_wall_sliding), which enables chimney climbing up narrow gaps.
 	_wall_jump_cooldown_timer = wall_grab_cooldown
+	_last_wall_jump_side = wall_side
 	_jump_buffer_timer = 0.0
 
 
