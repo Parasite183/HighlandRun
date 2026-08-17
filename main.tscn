@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://8w3yois4cj27"]
+[gd_scene load_steps=21 format=3 uid="uid://8w3yois4cj27"]
 
 [ext_resource type="PackedScene" path="res://player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://level.gd" id="2_level"]
+[ext_resource type="Script" path="res://orb.gd" id="3_orb"]
 
 [sub_resource type="Gradient" id="Gradient_background"]
 offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
@@ -10,52 +12,247 @@ colors = PackedColorArray(0.431373, 0.560784, 0.658824, 1, 0.494118, 0.623529, 0
 gradient = SubResource("Gradient_background")
 fill_to = Vector2(0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(4000, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1"]
+size = Vector2(490, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
-size = Vector2(64, 1080)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2"]
+size = Vector2(850, 32)
 
-[node name="Main" type="Node2D" unique_id=91465456]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1"]
+size = Vector2(70, 32)
 
-[node name="Background" type="Polygon2D" parent="." unique_id=640709436]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2"]
+size = Vector2(80, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3"]
+size = Vector2(90, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ledgea"]
+size = Vector2(180, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teachwall"]
+size = Vector2(64, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_farground"]
+size = Vector2(216, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chimneybase"]
+size = Vector2(566, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leftwall"]
+size = Vector2(64, 346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rightwall"]
+size = Vector2(64, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exitledge"]
+size = Vector2(157, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_landing"]
+size = Vector2(170, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_step"]
+size = Vector2(60, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_goal"]
+radius = 50.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("2_level")
+
+[node name="Background" type="Polygon2D" parent="." z_index=-10]
 texture = SubResource("GradientTexture2D_background")
 polygon = PackedVector2Array(-3000, -800, 3000, -800, 3000, 800, -3000, 800)
 uv = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=264701739]
-position = Vector2(0, 400)
+[node name="G1" type="StaticBody2D" parent="."]
+position = Vector2(-205, 400)
 
-[node name="FloorVisual" type="Polygon2D" parent="Floor" unique_id=859745293]
+[node name="Visual" type="Polygon2D" parent="G1"]
 color = Color(0.545098, 0.45098, 0.333333, 1)
-polygon = PackedVector2Array(-2000, -16, 2000, -16, 2000, 16, -2000, 16)
+polygon = PackedVector2Array(-245, -16, 245, -16, 245, 16, -245, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=907107225]
-shape = SubResource("RectangleShape2D_floor")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="G1"]
+shape = SubResource("RectangleShape2D_g1")
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=358318096]
-position = Vector2(-145, -150)
+[node name="G2" type="StaticBody2D" parent="."]
+position = Vector2(525, 400)
 
-[node name="WallVisual" type="Polygon2D" parent="Wall" unique_id=849406774]
+[node name="Visual" type="Polygon2D" parent="G2"]
+color = Color(0.545098, 0.45098, 0.333333, 1)
+polygon = PackedVector2Array(-425, -16, 425, -16, 425, 16, -425, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="G2"]
+shape = SubResource("RectangleShape2D_g2")
+
+[node name="P1" type="StaticBody2D" parent="."]
+position = Vector2(215, 352)
+
+[node name="Visual" type="Polygon2D" parent="P1"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, 16, -35, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P1"]
+shape = SubResource("RectangleShape2D_p1")
+
+[node name="P2" type="StaticBody2D" parent="."]
+position = Vector2(340, 304)
+
+[node name="Visual" type="Polygon2D" parent="P2"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-40, -16, 40, -16, 40, 16, -40, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P2"]
+shape = SubResource("RectangleShape2D_p2")
+
+[node name="P3" type="StaticBody2D" parent="."]
+position = Vector2(475, 256)
+
+[node name="Visual" type="Polygon2D" parent="P3"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-45, -16, 45, -16, 45, 16, -45, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P3"]
+shape = SubResource("RectangleShape2D_p3")
+
+[node name="LedgeA" type="StaticBody2D" parent="."]
+position = Vector2(630, 256)
+
+[node name="Visual" type="Polygon2D" parent="LedgeA"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, 16, -90, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeA"]
+shape = SubResource("RectangleShape2D_ledgea")
+
+[node name="TeachWall" type="StaticBody2D" parent="."]
+position = Vector2(752, 180)
+
+[node name="Visual" type="Polygon2D" parent="TeachWall"]
 color = Color(0.360784, 0.419608, 0.45098, 1)
-polygon = PackedVector2Array(-32, -540, 32, -540, 32, 540, -32, 540)
+polygon = PackedVector2Array(-32, -60, 32, -60, 32, 60, -32, 60)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1318083401]
-shape = SubResource("RectangleShape2D_wall")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeachWall"]
+shape = SubResource("RectangleShape2D_teachwall")
 
-[node name="WallRight" type="StaticBody2D" parent="." unique_id=1867162170]
-position = Vector2(-15, -150)
+[node name="Mid" type="StaticBody2D" parent="."]
+position = Vector2(675, 186)
 
-[node name="WallVisual" type="Polygon2D" parent="WallRight" unique_id=764585956]
+[node name="Visual" type="Polygon2D" parent="Mid"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, 16, -35, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mid"]
+shape = SubResource("RectangleShape2D_p1")
+
+[node name="FarGround" type="StaticBody2D" parent="."]
+position = Vector2(892, 186)
+
+[node name="Visual" type="Polygon2D" parent="FarGround"]
+color = Color(0.545098, 0.45098, 0.333333, 1)
+polygon = PackedVector2Array(-108, -16, 108, -16, 108, 16, -108, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FarGround"]
+shape = SubResource("RectangleShape2D_farground")
+
+[node name="ChimneyBase" type="StaticBody2D" parent="."]
+position = Vector2(1067, 186)
+
+[node name="Visual" type="Polygon2D" parent="ChimneyBase"]
+color = Color(0.545098, 0.45098, 0.333333, 1)
+polygon = PackedVector2Array(-283, -16, 283, -16, 283, 16, -283, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChimneyBase"]
+shape = SubResource("RectangleShape2D_chimneybase")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(1032, -57)
+
+[node name="Visual" type="Polygon2D" parent="LeftWall"]
 color = Color(0.360784, 0.419608, 0.45098, 1)
-polygon = PackedVector2Array(-32, -540, 32, -540, 32, 540, -32, 540)
+polygon = PackedVector2Array(-32, -173, 32, -173, 32, 173, -32, 173)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1659617926]
-shape = SubResource("RectangleShape2D_wall")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_leftwall")
 
-[node name="Player" parent="." unique_id=1469629407 instance=ExtResource("1_player")]
-position = Vector2(-80, 0)
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1161, -30)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=340222263]
+[node name="Visual" type="Polygon2D" parent="RightWall"]
+color = Color(0.360784, 0.419608, 0.45098, 1)
+polygon = PackedVector2Array(-32, -200, 32, -200, 32, 200, -32, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_rightwall")
+
+[node name="ExitLedge" type="StaticBody2D" parent="."]
+position = Vector2(1271.5, -194)
+
+[node name="Visual" type="Polygon2D" parent="ExitLedge"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-78.5, -16, 78.5, -16, 78.5, 16, -78.5, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitLedge"]
+shape = SubResource("RectangleShape2D_exitledge")
+
+[node name="LandingLedge" type="StaticBody2D" parent="."]
+position = Vector2(1575, -154)
+
+[node name="Visual" type="Polygon2D" parent="LandingLedge"]
+color = Color(0.584314, 0.498039, 0.368627, 1)
+polygon = PackedVector2Array(-85, -16, 85, -16, 85, 16, -85, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingLedge"]
+shape = SubResource("RectangleShape2D_landing")
+
+[node name="Step" type="StaticBody2D" parent="."]
+position = Vector2(1630, -195)
+
+[node name="Visual" type="Polygon2D" parent="Step"]
+color = Color(0.690196, 0.552941, 0.341176, 1)
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 25, -30, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Step"]
+shape = SubResource("RectangleShape2D_step")
+
+[node name="Summit" type="StaticBody2D" parent="."]
+position = Vector2(1750, -254)
+
+[node name="Visual" type="Polygon2D" parent="Summit"]
+color = Color(0.788235, 0.658824, 0.415686, 1)
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, 16, -90, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summit"]
+shape = SubResource("RectangleShape2D_ledgea")
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(1760, -315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
+shape = SubResource("CircleShape2D_goal")
+
+[node name="GoalOrb" type="Polygon2D" parent="."]
+position = Vector2(1760, -315)
+script = ExtResource("3_orb")
+
+[node name="GoalUI" type="CanvasLayer" parent="."]
+
+[node name="GoalLabel" type="Label" parent="GoalUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 56
+theme_override_colors/font_color = Color(1, 0.86, 0.5, 1)
+text = "Summit reached"
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(-400, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0

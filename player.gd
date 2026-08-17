@@ -111,6 +111,7 @@ var _dash_timer: float = 0.0               # > 0 while a dash is active
 var _dash_cooldown_timer: float = 0.0      # counts down after a dash ends
 var _dash_direction: float = 1.0           # horizontal direction of the active dash
 var _facing: float = 1.0                   # 1 = right, -1 = left (dash fallback)
+var controls_enabled: bool = true          # false = frozen in place (level complete)
 
 
 func _ready() -> void:
@@ -136,6 +137,8 @@ func _update_jump_velocity() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not controls_enabled:
+		return  # frozen - the level has been completed
 	var input_dir := Input.get_axis("move_left", "move_right")
 
 	# Track facing from input so a dash with no directional input goes the way
@@ -290,3 +293,9 @@ func _start_dash(input_dir: float) -> void:
 	_dash_timer = dash_duration
 	velocity.y = 0.0  # gravity is ignored during the dash window
 	dash_started.emit()
+
+
+## Freezes the player in place - called by the level when the goal is reached.
+func disable_controls() -> void:
+	controls_enabled = false
+	velocity = Vector2.ZERO
