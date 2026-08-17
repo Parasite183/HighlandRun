@@ -26,8 +26,9 @@ Open the project in Godot 4.x and press Play, or run the main scene
 - Variable-height jump (jump height derived from gravity, so a tap is a short
   hop and a held jump reaches full height)
 - Coyote time and jump buffering for forgiving platforming
-- Wall slide and wall jump (with a brief same-wall cooldown so holding into a
-  wall doesn't chain jumps, while still allowing chimney climbing)
+- Wall slide and wall jump (after a wall jump the wall is locked until the
+  player touches the opposite wall or lands, so climbing a gap requires
+  alternating between the two walls)
 - Dash with a cooldown, along input direction or facing direction
 
 All gameplay-tunable values are `@export`ed on `player.gd` and can be adjusted
