@@ -54,7 +54,7 @@ polygon = PackedVector2Array(-32, -270, 32, -270, 32, 270, -32, 270)
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="Player" parent="." unique_id=1469629407 instance=ExtResource("1_player")]
-position = Vector2(-200, 0)
+position = Vector2(-80, 0)
 wall_jump_push = 450.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=340222263]

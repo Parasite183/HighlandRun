@@ -116,6 +116,12 @@ func _ready() -> void:
 	# body's own collision shape by default, so they only detect external walls.
 	_left_wall_ray.enabled = true
 	_right_wall_ray.enabled = true
+	# NOTE (RayCast2D flush-contact quirk): with hit_from_inside = false (the
+	# default), a ray whose origin sits EXACTLY on a wall face (0.000px gap) can
+	# miss. The physics solver's sub-pixel margin normally prevents this, but if
+	# wall-slide/wall-jump detection ever starts missing intermittently after a
+	# level-geometry change, nudge the ray origins inward ~0.5-1px (or enable
+	# hit_from_inside) instead of relying on solver behavior staying favorable.
 
 
 ## Recomputes jump velocity from the target height using the kinematic formula
