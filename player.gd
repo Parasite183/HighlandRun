@@ -178,6 +178,12 @@ func _physics_process(delta: float) -> void:
 	var wall_side := _get_wall_side()
 	var wall_sliding := _is_wall_sliding(wall_side, input_dir)
 
+	# TEMP DEBUG - remove after playtest. Prints wall state to the Output
+	# panel every physics frame a wall is in contact, so wall contact timing
+	# can be watched live while playing.
+	if wall_side != 0:
+		print("WALL_DEBUG: side=%s sliding=%s vx=%.1f vy=%.1f" % [wall_side, wall_sliding, velocity.x, velocity.y])
+
 	# --- Jumping ---------------------------------------------------------
 	if Input.is_action_just_pressed("jump") and wall_sliding:
 		_do_wall_jump(wall_side)
