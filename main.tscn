@@ -2,26 +2,23 @@
 
 [ext_resource type="PackedScene" path="res://player.tscn" id="1_player"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(4000, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
-size = Vector2(64, 480)
-
 [sub_resource type="Gradient" id="Gradient_background"]
 offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
 colors = PackedColorArray(0.431373, 0.560784, 0.658824, 1, 0.494118, 0.623529, 0.721569, 1, 0.576471, 0.67451, 0.745098, 1, 0.545098, 0.521569, 0.439216, 1, 0.360784, 0.376471, 0.282353, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_background"]
 gradient = SubResource("Gradient_background")
-width = 64
-height = 64
-fill_from = Vector2(0, 0)
 fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(4000, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(64, 540)
 
 [node name="Main" type="Node2D" unique_id=91465456]
 
-[node name="Background" type="Polygon2D" parent="." z_index=-10]
+[node name="Background" type="Polygon2D" parent="." unique_id=640709436]
 texture = SubResource("GradientTexture2D_background")
 polygon = PackedVector2Array(-3000, -800, 3000, -800, 3000, 800, -3000, 800)
 uv = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
@@ -29,7 +26,7 @@ uv = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 [node name="Floor" type="StaticBody2D" parent="." unique_id=264701739]
 position = Vector2(0, 400)
 
-[node name="FloorVisual" type="Polygon2D" parent="Floor"]
+[node name="FloorVisual" type="Polygon2D" parent="Floor" unique_id=859745293]
 color = Color(0.545098, 0.45098, 0.333333, 1)
 polygon = PackedVector2Array(-2000, -16, 2000, -16, 2000, 16, -2000, 16)
 
@@ -37,27 +34,28 @@ polygon = PackedVector2Array(-2000, -16, 2000, -16, 2000, 16, -2000, 16)
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=358318096]
-position = Vector2(-156, 90)
+position = Vector2(-156, 120)
 
-[node name="WallVisual" type="Polygon2D" parent="Wall"]
+[node name="WallVisual" type="Polygon2D" parent="Wall" unique_id=849406774]
 color = Color(0.360784, 0.419608, 0.45098, 1)
-polygon = PackedVector2Array(-32, -240, 32, -240, 32, 240, -32, 240)
+polygon = PackedVector2Array(-32, -270, 32, -270, 32, 270, -32, 270)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1318083401]
 shape = SubResource("RectangleShape2D_wall")
 
-[node name="WallRight" type="StaticBody2D" parent="."]
-position = Vector2(-4, 90)
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1867162170]
+position = Vector2(-4, 120)
 
-[node name="WallVisual" type="Polygon2D" parent="WallRight"]
+[node name="WallVisual" type="Polygon2D" parent="WallRight" unique_id=764585956]
 color = Color(0.360784, 0.419608, 0.45098, 1)
-polygon = PackedVector2Array(-32, -240, 32, -240, 32, 240, -32, 240)
+polygon = PackedVector2Array(-32, -270, 32, -270, 32, 270, -32, 270)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1659617926]
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="Player" parent="." unique_id=1469629407 instance=ExtResource("1_player")]
 position = Vector2(-200, 0)
+wall_jump_push = 450.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=340222263]
 position_smoothing_enabled = true
