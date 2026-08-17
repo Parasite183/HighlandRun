@@ -76,10 +76,10 @@ signal dash_ended
 # ---------------------------------------------------------------------------
 ## Max fall speed while wall sliding, px/s.
 @export var wall_slide_speed: float = 120.0
-## Horizontal push away from the wall on a wall jump, px/s. Only needs to
-## detach from the wall and give a modest redirect - crossing a gap should
-## require holding toward the target wall (air_acceleration does the work).
-@export var wall_jump_push: float = 180.0
+## Horizontal push away from the wall on a wall jump, px/s. The launch alone
+## covers most of a typical gap; a brief hold toward the target wall finishes
+## the crossing (air_acceleration does the rest).
+@export var wall_jump_push: float = 260.0
 ## Vertical lift of a wall jump, px/s (upward).
 @export var wall_jump_velocity: float = 440.0
 

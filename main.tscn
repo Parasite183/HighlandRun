@@ -34,7 +34,7 @@ polygon = PackedVector2Array(-2000, -16, 2000, -16, 2000, 16, -2000, 16)
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=358318096]
-position = Vector2(-156, -150)
+position = Vector2(-145, -150)
 
 [node name="WallVisual" type="Polygon2D" parent="Wall" unique_id=849406774]
 color = Color(0.360784, 0.419608, 0.45098, 1)
@@ -44,7 +44,7 @@ polygon = PackedVector2Array(-32, -540, 32, -540, 32, 540, -32, 540)
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="WallRight" type="StaticBody2D" parent="." unique_id=1867162170]
-position = Vector2(-4, -150)
+position = Vector2(-15, -150)
 
 [node name="WallVisual" type="Polygon2D" parent="WallRight" unique_id=764585956]
 color = Color(0.360784, 0.419608, 0.45098, 1)
@@ -55,7 +55,6 @@ shape = SubResource("RectangleShape2D_wall")
 
 [node name="Player" parent="." unique_id=1469629407 instance=ExtResource("1_player")]
 position = Vector2(-80, 0)
-wall_jump_push = 180.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=340222263]
 position_smoothing_enabled = true
