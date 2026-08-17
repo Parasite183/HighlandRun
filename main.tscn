@@ -46,6 +46,16 @@ polygon = PackedVector2Array(-32, -240, 32, -240, 32, 240, -32, 240)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1318083401]
 shape = SubResource("RectangleShape2D_wall")
 
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(632, 240)
+
+[node name="WallVisual" type="Polygon2D" parent="WallRight"]
+color = Color(0.360784, 0.419608, 0.45098, 1)
+polygon = PackedVector2Array(-32, -240, 32, -240, 32, 240, -32, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("RectangleShape2D_wall")
+
 [node name="Player" parent="." unique_id=1469629407 instance=ExtResource("1_player")]
 position = Vector2(-200, 0)
 
