@@ -176,7 +176,7 @@ func _physics_process(delta: float) -> void:
 	# --- Wall detection --------------------------------------------------
 	# wall_side: -1 = wall on the left, 1 = wall on the right, 0 = none.
 	var wall_side := _get_wall_side()
-	var wall_sliding := _is_wall_sliding(wall_side, input_dir)
+	var wall_sliding := _is_wall_sliding(wall_side)
 
 	# TEMP DEBUG - remove after playtest. Prints wall state to the Output
 	# panel every physics frame a wall is in contact, so wall contact timing
@@ -218,11 +218,11 @@ func _get_wall_side() -> int:
 	return 0
 
 
-## Wall sliding requires: airborne (not grounded), pressing into a wall, and
-## being past the post-wall-jump grace period. The wall is grabbable the
-## instant it's touched while pushing into it, whether still rising from a
-## previous jump or already falling - no need to complete the rise first.
-func _is_wall_sliding(wall_side: int, input_dir: float) -> bool:
+## Wall sliding requires only: airborne (not grounded) and being past the
+## post-wall-jump grace period. Touching a wall is enough to grab it, whether
+## rising or falling and with or without directional input toward it - no
+## need to hold the direction key into the wall.
+func _is_wall_sliding(wall_side: int) -> bool:
 	if wall_side == 0 or is_on_floor():
 		return false
 	# The cooldown only blocks re-grabbing the *same* wall the player jumped
@@ -232,10 +232,7 @@ func _is_wall_sliding(wall_side: int, input_dir: float) -> bool:
 	# (alternating wall jumps up a narrow gap) possible.
 	if _wall_jump_cooldown_timer > 0.0 and wall_side == _last_wall_jump_side:
 		return false  # brief grace period after jumping off this same wall
-	# The player must actively push into the wall - just touching it isn't enough.
-	if wall_side == -1:
-		return input_dir < 0.0
-	return input_dir > 0.0
+	return true
 
 
 ## Ground / coyote jump.
