@@ -5,6 +5,12 @@ extends CharacterBody2D
 ## A 2D precision platformer character: run, variable-height jump, coyote time,
 ## jump buffering, wall slide / wall jump, and a dash with a cooldown.
 ##
+## Controls (configured in Project Settings -> Input Map, actions:
+## move_left/move_right, jump, dash):
+##   - A / D or Left/Right arrows: move
+##   - Space: jump (hold for a higher jump, tap for a short hop)
+##   - Shift: dash
+##
 ## Every gameplay-tunable number is an @export so it can be adjusted in the
 ## Inspector (even live, while the game is paused/running) without touching code.
 ##
