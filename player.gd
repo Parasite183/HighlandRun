@@ -37,8 +37,12 @@ signal dash_ended
 ## Deceleration when no horizontal input while grounded, px/s^2.
 @export var ground_friction: float = 1600.0
 ## Acceleration while airborne, px/s^2. Lower than ground_acceleration = the
-## player has less grip in the air (also used as air friction).
+## player has less grip in the air while actively steering with input.
 @export var air_acceleration: float = 1000.0
+## Deceleration while airborne with no horizontal input, px/s^2. Much lower
+## than air_acceleration so wall-jump momentum carries further even if input
+## isn't held perfectly the whole time.
+@export var air_drag: float = 300.0
 
 ## Downward gravity, px/s^2. Jump velocity is derived from this (see below).
 @export var gravity: float = 1800.0:
@@ -208,12 +212,12 @@ func _get_wall_side() -> int:
 	return 0
 
 
-## Wall sliding requires: airborne, falling, pressing into a wall, and being
-## past the post-wall-jump grace period.
+## Wall sliding requires: airborne (not grounded), pressing into a wall, and
+## being past the post-wall-jump grace period. The wall is grabbable the
+## instant it's touched while pushing into it, whether still rising from a
+## previous jump or already falling - no need to complete the rise first.
 func _is_wall_sliding(wall_side: int, input_dir: float) -> bool:
 	if wall_side == 0 or is_on_floor():
-		return false
-	if velocity.y <= 0.0:  # only while falling, not while rising or standing still
 		return false
 	# The cooldown only blocks re-grabbing the *same* wall the player jumped
 	# from, so holding into one wall can't chain unintended wall jumps. The
@@ -257,9 +261,9 @@ func _apply_horizontal_movement(input_dir: float, delta: float) -> void:
 		var accel := ground_acceleration if is_on_floor() else air_acceleration
 		velocity.x = move_toward(velocity.x, input_dir * move_speed, accel * delta)
 	else:
-		# Friction when no input. Air friction reuses air_acceleration for now -
-		# bump it (or add an export) if the air drift feels too slippery.
-		var friction := ground_friction if is_on_floor() else air_acceleration
+		# Friction when no input: ground_friction on the ground, air_drag in the
+		# air (kept low so wall-jump momentum carries without holding input).
+		var friction := ground_friction if is_on_floor() else air_drag
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
 
