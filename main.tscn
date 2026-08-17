@@ -136,7 +136,7 @@ polygon = PackedVector2Array(-32, -60, 32, -60, 32, 60, -32, 60)
 shape = SubResource("RectangleShape2D_teachwall")
 
 [node name="Mid" type="StaticBody2D" parent="."]
-position = Vector2(675, 186)
+position = Vector2(620, 166)
 
 [node name="Visual" type="Polygon2D" parent="Mid"]
 color = Color(0.584314, 0.498039, 0.368627, 1)
