@@ -65,9 +65,9 @@ position = Vector2(-205, 400)
 
 [node name="Visual" type="NinePatchRect" parent="G1"]
 texture = ExtResource("4_platform")
-patch_margin_left = 230
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 230
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -245.0
 offset_top = -16.0
@@ -82,9 +82,9 @@ position = Vector2(525, 400)
 
 [node name="Visual" type="NinePatchRect" parent="G2"]
 texture = ExtResource("4_platform")
-patch_margin_left = 230
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 230
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -425.0
 offset_top = -16.0
@@ -99,9 +99,9 @@ position = Vector2(215, 352)
 
 [node name="Visual" type="NinePatchRect" parent="P1"]
 texture = ExtResource("4_platform")
-patch_margin_left = 34
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 34
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -35.0
 offset_top = -16.0
@@ -116,9 +116,9 @@ position = Vector2(340, 304)
 
 [node name="Visual" type="NinePatchRect" parent="P2"]
 texture = ExtResource("4_platform")
-patch_margin_left = 39
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 39
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -40.0
 offset_top = -16.0
@@ -133,9 +133,9 @@ position = Vector2(475, 256)
 
 [node name="Visual" type="NinePatchRect" parent="P3"]
 texture = ExtResource("4_platform")
-patch_margin_left = 44
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 44
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -45.0
 offset_top = -16.0
@@ -150,9 +150,9 @@ position = Vector2(630, 256)
 
 [node name="Visual" type="NinePatchRect" parent="LedgeA"]
 texture = ExtResource("4_platform")
-patch_margin_left = 89
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 89
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -90.0
 offset_top = -16.0
@@ -167,10 +167,10 @@ position = Vector2(752, 180)
 
 [node name="Visual" type="NinePatchRect" parent="TeachWall"]
 texture = ExtResource("4_platform")
-patch_margin_left = 31
-patch_margin_top = 57
-patch_margin_right = 31
-patch_margin_bottom = 57
+patch_margin_left = 24
+patch_margin_top = 16
+patch_margin_right = 24
+patch_margin_bottom = 16
 offset_left = -32.0
 offset_top = -60.0
 offset_right = 32.0
@@ -184,9 +184,9 @@ position = Vector2(620, 166)
 
 [node name="Visual" type="NinePatchRect" parent="Mid"]
 texture = ExtResource("4_platform")
-patch_margin_left = 34
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 34
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -35.0
 offset_top = -16.0
@@ -201,9 +201,9 @@ position = Vector2(892, 186)
 
 [node name="Visual" type="NinePatchRect" parent="FarGround"]
 texture = ExtResource("4_platform")
-patch_margin_left = 107
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 107
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -108.0
 offset_top = -16.0
@@ -218,9 +218,9 @@ position = Vector2(1067, 186)
 
 [node name="Visual" type="NinePatchRect" parent="ChimneyBase"]
 texture = ExtResource("4_platform")
-patch_margin_left = 230
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 230
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -283.0
 offset_top = -16.0
@@ -235,10 +235,10 @@ position = Vector2(1032, -57)
 
 [node name="Visual" type="NinePatchRect" parent="LeftWall"]
 texture = ExtResource("4_platform")
-patch_margin_left = 31
-patch_margin_top = 57
-patch_margin_right = 31
-patch_margin_bottom = 57
+patch_margin_left = 24
+patch_margin_top = 16
+patch_margin_right = 24
+patch_margin_bottom = 16
 offset_left = -32.0
 offset_top = -173.0
 offset_right = 32.0
@@ -252,10 +252,10 @@ position = Vector2(1161, -30)
 
 [node name="Visual" type="NinePatchRect" parent="RightWall"]
 texture = ExtResource("4_platform")
-patch_margin_left = 31
-patch_margin_top = 57
-patch_margin_right = 31
-patch_margin_bottom = 57
+patch_margin_left = 24
+patch_margin_top = 16
+patch_margin_right = 24
+patch_margin_bottom = 16
 offset_left = -32.0
 offset_top = -200.0
 offset_right = 32.0
@@ -269,9 +269,9 @@ position = Vector2(1271.5, -194)
 
 [node name="Visual" type="NinePatchRect" parent="ExitLedge"]
 texture = ExtResource("4_platform")
-patch_margin_left = 77
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 77
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -78.5
 offset_top = -16.0
@@ -286,9 +286,9 @@ position = Vector2(1575, -154)
 
 [node name="Visual" type="NinePatchRect" parent="LandingLedge"]
 texture = ExtResource("4_platform")
-patch_margin_left = 84
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 84
+patch_margin_right = 24
 patch_margin_bottom = 16
 offset_left = -85.0
 offset_top = -16.0
@@ -303,10 +303,10 @@ position = Vector2(1630, -195)
 
 [node name="Visual" type="NinePatchRect" parent="Step"]
 texture = ExtResource("4_platform")
-patch_margin_left = 29
-patch_margin_top = 24
-patch_margin_right = 29
-patch_margin_bottom = 24
+patch_margin_left = 24
+patch_margin_top = 16
+patch_margin_right = 24
+patch_margin_bottom = 16
 offset_left = -30.0
 offset_top = -25.0
 offset_right = 30.0
@@ -320,9 +320,9 @@ position = Vector2(1750, -254)
 
 [node name="Visual" type="NinePatchRect" parent="Summit"]
 texture = ExtResource("4_platform")
-patch_margin_left = 89
+patch_margin_left = 24
 patch_margin_top = 16
-patch_margin_right = 89
+patch_margin_right = 24
 patch_margin_bottom = 16
 modulate = Color(1.25, 1.1, 0.9, 1)
 offset_left = -90.0
