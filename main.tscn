@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://level.gd" id="2_level"]
 [ext_resource type="Script" path="res://orb.gd" id="3_orb"]
 [ext_resource type="Texture2D" path="res://art/platform_tile.png" id="4_platform"]
+[ext_resource type="Texture2D" path="res://art/platform_tile_v.png" id="6_platform_v"]
 [ext_resource type="Texture2D" path="res://art/mountains.jpeg" id="5_mountains"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1"]
@@ -166,11 +167,11 @@ shape = SubResource("RectangleShape2D_ledgea")
 position = Vector2(752, 180)
 
 [node name="Visual" type="NinePatchRect" parent="TeachWall"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
+texture = ExtResource("6_platform_v")
+patch_margin_left = 16
+patch_margin_top = 24
+patch_margin_right = 16
+patch_margin_bottom = 24
 offset_left = -32.0
 offset_top = -60.0
 offset_right = 32.0
@@ -234,11 +235,11 @@ shape = SubResource("RectangleShape2D_chimneybase")
 position = Vector2(1032, -57)
 
 [node name="Visual" type="NinePatchRect" parent="LeftWall"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
+texture = ExtResource("6_platform_v")
+patch_margin_left = 16
+patch_margin_top = 24
+patch_margin_right = 16
+patch_margin_bottom = 24
 offset_left = -32.0
 offset_top = -173.0
 offset_right = 32.0
@@ -251,11 +252,11 @@ shape = SubResource("RectangleShape2D_leftwall")
 position = Vector2(1161, -30)
 
 [node name="Visual" type="NinePatchRect" parent="RightWall"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
+texture = ExtResource("6_platform_v")
+patch_margin_left = 16
+patch_margin_top = 24
+patch_margin_right = 16
+patch_margin_bottom = 24
 offset_left = -32.0
 offset_top = -200.0
 offset_right = 32.0
