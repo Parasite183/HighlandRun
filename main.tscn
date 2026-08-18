@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://level.gd" id="2_level"]
 [ext_resource type="Script" path="res://orb.gd" id="3_orb"]
 [ext_resource type="Texture2D" path="res://art/platform_tile.png" id="4_platform"]
-[ext_resource type="Texture2D" path="res://art/platform_tile_v.png" id="6_platform_v"]
 [ext_resource type="Texture2D" path="res://art/mountains.jpeg" id="5_mountains"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1"]
@@ -66,9 +65,9 @@ position = Vector2(-205, 400)
 
 [node name="Visual" type="NinePatchRect" parent="G1"]
 texture = ExtResource("4_platform")
-patch_margin_left = 24
+patch_margin_left = 220
 patch_margin_top = 16
-patch_margin_right = 24
+patch_margin_right = 220
 patch_margin_bottom = 16
 offset_left = -245.0
 offset_top = -16.0
@@ -83,9 +82,9 @@ position = Vector2(525, 400)
 
 [node name="Visual" type="NinePatchRect" parent="G2"]
 texture = ExtResource("4_platform")
-patch_margin_left = 24
+patch_margin_left = 220
 patch_margin_top = 16
-patch_margin_right = 24
+patch_margin_right = 220
 patch_margin_bottom = 16
 offset_left = -425.0
 offset_top = -16.0
@@ -98,16 +97,13 @@ shape = SubResource("RectangleShape2D_g2")
 [node name="P1" type="StaticBody2D" parent="."]
 position = Vector2(215, 352)
 
-[node name="Visual" type="NinePatchRect" parent="P1"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -35.0
-offset_top = -16.0
-offset_right = 35.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="P1"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, 16, -35, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="P1"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, -11, -35, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P1"]
 shape = SubResource("RectangleShape2D_p1")
@@ -115,16 +111,13 @@ shape = SubResource("RectangleShape2D_p1")
 [node name="P2" type="StaticBody2D" parent="."]
 position = Vector2(340, 304)
 
-[node name="Visual" type="NinePatchRect" parent="P2"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -40.0
-offset_top = -16.0
-offset_right = 40.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="P2"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-40, -16, 40, -16, 40, 16, -40, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="P2"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-40, -16, 40, -16, 40, -11, -40, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P2"]
 shape = SubResource("RectangleShape2D_p2")
@@ -132,16 +125,13 @@ shape = SubResource("RectangleShape2D_p2")
 [node name="P3" type="StaticBody2D" parent="."]
 position = Vector2(475, 256)
 
-[node name="Visual" type="NinePatchRect" parent="P3"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -45.0
-offset_top = -16.0
-offset_right = 45.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="P3"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-45, -16, 45, -16, 45, 16, -45, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="P3"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-45, -16, 45, -16, 45, -11, -45, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P3"]
 shape = SubResource("RectangleShape2D_p3")
@@ -149,16 +139,13 @@ shape = SubResource("RectangleShape2D_p3")
 [node name="LedgeA" type="StaticBody2D" parent="."]
 position = Vector2(630, 256)
 
-[node name="Visual" type="NinePatchRect" parent="LedgeA"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -90.0
-offset_top = -16.0
-offset_right = 90.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="LedgeA"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, 16, -90, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="LedgeA"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, -11, -90, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeA"]
 shape = SubResource("RectangleShape2D_ledgea")
@@ -166,16 +153,13 @@ shape = SubResource("RectangleShape2D_ledgea")
 [node name="TeachWall" type="StaticBody2D" parent="."]
 position = Vector2(752, 180)
 
-[node name="Visual" type="NinePatchRect" parent="TeachWall"]
-texture = ExtResource("6_platform_v")
-patch_margin_left = 16
-patch_margin_top = 24
-patch_margin_right = 16
-patch_margin_bottom = 24
-offset_left = -32.0
-offset_top = -60.0
-offset_right = 32.0
-offset_bottom = 60.0
+[node name="Visual" type="Polygon2D" parent="TeachWall"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-32, -60, 32, -60, 32, 60, -32, 60)
+
+[node name="TopEdge" type="Polygon2D" parent="TeachWall"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-32, -60, 32, -60, 32, -54, -32, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeachWall"]
 shape = SubResource("RectangleShape2D_teachwall")
@@ -183,16 +167,13 @@ shape = SubResource("RectangleShape2D_teachwall")
 [node name="Mid" type="StaticBody2D" parent="."]
 position = Vector2(620, 166)
 
-[node name="Visual" type="NinePatchRect" parent="Mid"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -35.0
-offset_top = -16.0
-offset_right = 35.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="Mid"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, 16, -35, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="Mid"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-35, -16, 35, -16, 35, -11, -35, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mid"]
 shape = SubResource("RectangleShape2D_p1")
@@ -202,9 +183,9 @@ position = Vector2(892, 186)
 
 [node name="Visual" type="NinePatchRect" parent="FarGround"]
 texture = ExtResource("4_platform")
-patch_margin_left = 24
+patch_margin_left = 108
 patch_margin_top = 16
-patch_margin_right = 24
+patch_margin_right = 108
 patch_margin_bottom = 16
 offset_left = -108.0
 offset_top = -16.0
@@ -219,9 +200,9 @@ position = Vector2(1067, 186)
 
 [node name="Visual" type="NinePatchRect" parent="ChimneyBase"]
 texture = ExtResource("4_platform")
-patch_margin_left = 24
+patch_margin_left = 220
 patch_margin_top = 16
-patch_margin_right = 24
+patch_margin_right = 220
 patch_margin_bottom = 16
 offset_left = -283.0
 offset_top = -16.0
@@ -234,16 +215,13 @@ shape = SubResource("RectangleShape2D_chimneybase")
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2(1032, -57)
 
-[node name="Visual" type="NinePatchRect" parent="LeftWall"]
-texture = ExtResource("6_platform_v")
-patch_margin_left = 16
-patch_margin_top = 24
-patch_margin_right = 16
-patch_margin_bottom = 24
-offset_left = -32.0
-offset_top = -173.0
-offset_right = 32.0
-offset_bottom = 173.0
+[node name="Visual" type="Polygon2D" parent="LeftWall"]
+color = Color(0.361, 0.42, 0.451, 1)
+polygon = PackedVector2Array(-32, -173, 32, -173, 32, 173, -32, 173)
+
+[node name="TopEdge" type="Polygon2D" parent="LeftWall"]
+color = Color(0.47, 0.54, 0.57, 1)
+polygon = PackedVector2Array(-32, -173, 32, -173, 32, -167, -32, -167)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
 shape = SubResource("RectangleShape2D_leftwall")
@@ -251,16 +229,13 @@ shape = SubResource("RectangleShape2D_leftwall")
 [node name="RightWall" type="StaticBody2D" parent="."]
 position = Vector2(1161, -30)
 
-[node name="Visual" type="NinePatchRect" parent="RightWall"]
-texture = ExtResource("6_platform_v")
-patch_margin_left = 16
-patch_margin_top = 24
-patch_margin_right = 16
-patch_margin_bottom = 24
-offset_left = -32.0
-offset_top = -200.0
-offset_right = 32.0
-offset_bottom = 200.0
+[node name="Visual" type="Polygon2D" parent="RightWall"]
+color = Color(0.361, 0.42, 0.451, 1)
+polygon = PackedVector2Array(-32, -200, 32, -200, 32, 200, -32, 200)
+
+[node name="TopEdge" type="Polygon2D" parent="RightWall"]
+color = Color(0.47, 0.54, 0.57, 1)
+polygon = PackedVector2Array(-32, -200, 32, -200, 32, -194, -32, -194)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("RectangleShape2D_rightwall")
@@ -268,16 +243,13 @@ shape = SubResource("RectangleShape2D_rightwall")
 [node name="ExitLedge" type="StaticBody2D" parent="."]
 position = Vector2(1271.5, -194)
 
-[node name="Visual" type="NinePatchRect" parent="ExitLedge"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -78.5
-offset_top = -16.0
-offset_right = 78.5
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="ExitLedge"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-78.5, -16, 78.5, -16, 78.5, 16, -78.5, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="ExitLedge"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-78.5, -16, 78.5, -16, 78.5, -11, -78.5, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitLedge"]
 shape = SubResource("RectangleShape2D_exitledge")
@@ -285,16 +257,13 @@ shape = SubResource("RectangleShape2D_exitledge")
 [node name="LandingLedge" type="StaticBody2D" parent="."]
 position = Vector2(1575, -154)
 
-[node name="Visual" type="NinePatchRect" parent="LandingLedge"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -85.0
-offset_top = -16.0
-offset_right = 85.0
-offset_bottom = 16.0
+[node name="Visual" type="Polygon2D" parent="LandingLedge"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-85, -16, 85, -16, 85, 16, -85, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="LandingLedge"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-85, -16, 85, -16, 85, -11, -85, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingLedge"]
 shape = SubResource("RectangleShape2D_landing")
@@ -302,16 +271,13 @@ shape = SubResource("RectangleShape2D_landing")
 [node name="Step" type="StaticBody2D" parent="."]
 position = Vector2(1630, -195)
 
-[node name="Visual" type="NinePatchRect" parent="Step"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
-offset_left = -30.0
-offset_top = -25.0
-offset_right = 30.0
-offset_bottom = 25.0
+[node name="Visual" type="Polygon2D" parent="Step"]
+color = Color(0.585, 0.396, 0.245, 1)
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 25, -30, 25)
+
+[node name="TopEdge" type="Polygon2D" parent="Step"]
+color = Color(0.8, 0.57, 0.38, 1)
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, -19, -30, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Step"]
 shape = SubResource("RectangleShape2D_step")
@@ -319,17 +285,15 @@ shape = SubResource("RectangleShape2D_step")
 [node name="Summit" type="StaticBody2D" parent="."]
 position = Vector2(1750, -254)
 
-[node name="Visual" type="NinePatchRect" parent="Summit"]
-texture = ExtResource("4_platform")
-patch_margin_left = 24
-patch_margin_top = 16
-patch_margin_right = 24
-patch_margin_bottom = 16
+[node name="Visual" type="Polygon2D" parent="Summit"]
+color = Color(0.585, 0.396, 0.245, 1)
 modulate = Color(1.25, 1.1, 0.9, 1)
-offset_left = -90.0
-offset_top = -16.0
-offset_right = 90.0
-offset_bottom = 16.0
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, 16, -90, 16)
+
+[node name="TopEdge" type="Polygon2D" parent="Summit"]
+color = Color(0.8, 0.57, 0.38, 1)
+modulate = Color(1.25, 1.1, 0.9, 1)
+polygon = PackedVector2Array(-90, -16, 90, -16, 90, -11, -90, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Summit"]
 shape = SubResource("RectangleShape2D_ledgea")
