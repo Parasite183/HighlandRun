@@ -98,6 +98,7 @@ signal dash_ended
 # ---------------------------------------------------------------------------
 @onready var _left_wall_ray: RayCast2D = $WallRayLeft
 @onready var _right_wall_ray: RayCast2D = $WallRayRight
+@onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 
 # ---------------------------------------------------------------------------
 # Internal state
@@ -120,6 +121,13 @@ func _ready() -> void:
 	# body's own collision shape by default, so they only detect external walls.
 	_left_wall_ray.enabled = true
 	_right_wall_ray.enabled = true
+	# Animation hooks: the dash pose is driven directly by the dash signals so
+	# it snaps on the exact frame the dash starts; every other pose is picked
+	# each physics frame from the existing state (is_on_floor / wall_sliding /
+	# velocity) in _update_animation().
+	dash_started.connect(_on_dash_started)
+	dash_ended.connect(_on_dash_ended)
+	_anim.play("idle")
 	# NOTE (RayCast2D flush-contact quirk): with hit_from_inside = false (the
 	# default), a ray whose origin sits EXACTLY on a wall face (0.000px gap) can
 	# miss. The physics solver's sub-pixel margin normally prevents this, but if
@@ -203,6 +211,41 @@ func _physics_process(delta: float) -> void:
 		_apply_vertical_movement(delta, wall_sliding)
 
 	move_and_slide()
+
+	_update_animation(wall_side, wall_sliding)
+
+
+## Picks the animation pose from the existing movement state. No new state is
+## tracked - everything derives from is_on_floor(), the per-frame wall_sliding
+## result, the dash signals, and velocity.
+func _update_animation(wall_side: int, wall_sliding: bool) -> void:
+	var target := "idle"
+	if _is_dashing():
+		target = "dash"
+	elif wall_sliding:
+		target = "wall_slide"
+	elif is_on_floor():
+		target = "run" if absf(velocity.x) > 20.0 else "idle"
+	else:
+		target = "jump"
+	if _anim.animation != target:
+		_anim.play(target)
+	# The art has the wall on the character's right; mirror it when the actual
+	# wall is on the left so the slide pose reads against it.
+	if wall_sliding:
+		_anim.flip_h = wall_side == -1
+	else:
+		_anim.flip_h = _facing < 0.0
+
+
+## Dash pose snaps on via the signal; _update_animation() takes over afterwards.
+func _on_dash_started() -> void:
+	_anim.play("dash")
+
+
+## The next physics frame's _update_animation() resumes the normal pose.
+func _on_dash_ended() -> void:
+	pass
 
 
 ## True while a dash is in its active window.
