@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_player"]
 [ext_resource type="Texture2D" path="res://art/player_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" path="res://art/player_run.png" id="3_run"]
+[ext_resource type="Texture2D" path="res://art/player_run2.png" id="7_run2"]
 [ext_resource type="Texture2D" path="res://art/player_jump.png" id="4_jump"]
 [ext_resource type="Texture2D" path="res://art/player_wall_slide.png" id="5_wall"]
 [ext_resource type="Texture2D" path="res://art/player_dash.png" id="6_dash"]
@@ -18,10 +19,10 @@ animations = [{
 "speed": 5.0,
 "loop_mode": 0
 }, {
-"frames": [ExtResource("3_run")],
+"frames": [ExtResource("3_run"), ExtResource("7_run2")],
 "loop": true,
 "name": &"run",
-"speed": 5.0,
+"speed": 12.0,
 "loop_mode": 0
 }, {
 "frames": [ExtResource("4_jump")],
